@@ -12,7 +12,7 @@
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
            <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
            </div>
-           <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+           <div class="border-r border-b border-l w-full shadow-xl hover:shadow-2xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
                  <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет запросов к таблицам</div>
                  <p class="text-gray-700 text-xl font-rale text-center">Позволяет проанализировать общее количество запросов к таблице.</p>
@@ -22,7 +22,7 @@
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
           <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
           </div>
-          <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="border-r border-b border-l w-full shadow-xl hover:shadow-2xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
              <div class="mb-8">
                 <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет по запросам от разработчиков</div>
                 <p class="text-gray-700 text-xl font-rale text-center">Позволяет выявить наиболее активных разработчиков, и тех кто единожды загрузил данные</p>
@@ -32,7 +32,7 @@
        <div class="max-w-sm w-full lg:max-w-full lg:flex">
         <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
         </div>
-        <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="border-r border-b border-l w-full shadow-xl hover:shadow-2xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
            <div class="mb-8">
               <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Функция 3</div>
               <p class="text-gray-700 text-xl font-rale text-center">Ждите, скоро появится ^_^</p>
@@ -89,7 +89,7 @@
                         <p class="font-semibold text-xl font-corme tracking-widest">Самая используемая таблица</p>
                     </div>
                     <div class="flex justify-center">
-                        <p class="font-semibold text-6xl font-rale tracking-widest">2048 записей</p>
+                        <p class="font-semibold text-6xl font-rale tracking-widest hover:underline">2048 записей</p>
                     </div>
                 </div>
             </div>
