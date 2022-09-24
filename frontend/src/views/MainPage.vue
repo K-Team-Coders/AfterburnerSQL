@@ -69,28 +69,28 @@
                     <div class="flex items-center py-2 mr-6">
                         <div class="mr-1">
                             <div class="flex items-center justify-center">
-                                <div class="text-3xl font-bold text-gray-800 mr-2">24.7K</div>
+                                <div class="text-3xl font-bold text-gray-800 mr-2">{{this.sum_into}}</div>
                             </div>
-                            <div class="text-lg text-gray-500 font-corme">Количество запросов к таблицам</div>
+                            <div class="text-lg text-gray-500 font-corme">Общее количество JOIN</div>
                         </div>
                     </div>
                     <!-- Total Pageviews -->
                     <div class="flex items-center py-2 mr-6">
                         <div class="mr-1">
                             <div class="flex items-center justify-center">
-                                <div class="text-3xl font-bold text-gray-800 mr-2">56.9K</div>
+                                <div class="text-3xl font-bold text-gray-800 mr-2">{{this.sum_froms}}</div>
                             </div>
-                            <div class="text-lg text-gray-500 font-corme">Количество запросов разработчиков</div>
+                            <div class="text-lg text-gray-500 font-corme">Общее количество FROM</div>
                         </div>
                     </div>
                     <!-- Bounce Rate -->
                     <div class="flex items-center py-2">
                         <div class="mr-5">
                             <div class="flex items-center justify-center">
-                                <div class="text-3xl font-bold text-gray-800 mr-2">54K</div>
+                                <div class="text-3xl font-bold text-gray-800 mr-2">{{this.sum_into}}</div>
                                 <div class="text-sm font-medium text-yellow-500"></div>
                             </div>
-                            <div class="text-lg text-gray-500 font-corme">Количество запросов загрузчиков</div>
+                            <div class="text-lg text-gray-500 font-corme">Общее количество INTO</div>
                         </div>
                     </div>
                 </div>
@@ -110,10 +110,10 @@
   />
                 <div class="container">
                     <div class ="flex justify-center mt-32">
-                        <p class="font-semibold text-xl font-corme tracking-widest">Самая используемая таблица</p>
+                        <p class="font-semibold text-xl font-corme tracking-widest">Самая востребованная таблица</p>
                     </div>
                     <div class="flex justify-center">
-                        <p class="font-semibold text-6xl font-rale tracking-widest hover:underline">2048 записей</p>
+                        <p class="font-semibold text-6xl font-rale tracking-widest hover:underline">{{this.most_wanted_count}}</p>
                     </div>
                 </div>
             </div>
@@ -201,6 +201,11 @@ props: {
 data()
 {
       return {
+        sum_into: '',
+        sum_joins: '',
+        sum_froms: '',
+        most_wanted_count: '',
+        most_wanted_name: '',
         chartData: {
         datasets: [
           {
@@ -257,7 +262,12 @@ data()
                 this.$data.chartData.datasets[0].data = response.data.join
                 this.$data.chartData.datasets[1].data = response.data.into
                 this.$data.chartData.datasets[2].data = response.data.from
-                
+                this.sum_into = response.data.sum_into
+                this.sum_joins = response.data.sum_joins
+                this.sum_froms = response.data.sum_froms
+                this.most_wanted_count = response.data.most_wanted.count
+                this.most_wanted_name = response.data.most_wanted.table
+
                 axios.post('http://127.0.0.1:8000/main/load_file_users/',                 
                 formData,
                 { headers: {
