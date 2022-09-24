@@ -12,6 +12,7 @@
     :tables1="tables1"
     :into="into"
     :join="join"
+    :from="from"
   />
 </template>
 
@@ -85,11 +86,11 @@ export default {
       chartData: {
         datasets: [
           {
-            label: 'SELECT',
+            label: 'JOIN',
             fill: false,
             borderColor: '#887BB5',
             backgroundColor: '#4528A4',
-            data: [ {1.2, 4.5}
+            data: [ join
             ]
           },
           {

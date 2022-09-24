@@ -97,7 +97,17 @@
             </div>
             <!-- Chart built with Chart.js 3 -->
             <div class="flex justify-start mb-3 ml-12">
-               <ScatterChart></ScatterChart>
+                <Scatter
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :plugins="plugins"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
                 <div class="container">
                     <div class ="flex justify-center mt-32">
                         <p class="font-semibold text-xl font-corme tracking-widest">Самая используемая таблица</p>
@@ -121,21 +131,130 @@
 import axios from 'axios'
 import Navbar from '../components/Navbar.vue';
 import BarChart from '../components/charts/BarChart.vue';
+import { Scatter } from 'vue-chartjs'
 
-import ScatterChart from '../components/charts/ScatterChart.vue';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  PointElement,
+  LinearScale
+} from 'chart.js'
 
-
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  CategoryScale,
+  PointElement,
+  LinearScale
+)
 
 export default {
-components: { Navbar, BarChart, ScatterChart, BarChart, ScatterChart },
+components: { Navbar, Scatter },
+props: {
+    chartId: {
+      type: String,
+      default: 'scatter-chart'
+    },
+    datasetIdKey: {
+      type: String,
+      default: 'label'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Array,
+      default: () => []
+    },
+    
+  },
 data()
 {
       return {
+
         tables1: '',
         from: '',
         into:'',
         join:'',
+        chartData: {
+        datasets: [
+          {
+            label: 'JOIN',
+            fill: false,
+            borderColor: '#887BB5',
+            backgroundColor: '#4528A4',
+            data:  [this.join]
+            
+          },
+          {
+            label: 'INTO',
+            fill: false,
+            borderColor: '#f87979',
+            backgroundColor: '#FF3F3F',
+            data: [
+            ]
+          },
+          {
+            label: 'FROM',
+            fill: false,
+            borderColor: '#23D323',
+            backgroundColor: '#23D323',
+            data: [
+              {
+                x: -2,
+                y: -4
+              },
+              {
+                x: -1,
+                y: -1
+              },
+              {
+                x: 0,
+                y: 1
+              },
+              {
+                x: 1,
+                y: -1
+              },
+              {
+                x: 2,
+                y: -4
+              }
+            ]
+          }
+        ]
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        onClick: (e) => {
+            const canvasPosition = ChartJS.helpers.getRelativePosition(e, chart);
 
+            // Substitute the appropriate scale IDs
+            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+            const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
+            console.log('Haaa')
+        }
+      }
       }
     },
   methods: 
@@ -155,7 +274,7 @@ data()
                 this.from = response.data.from
                 this.into = response.data.into
                 this.join = response.data.join
-               
+               console.log(this.join)
             });
         },
       handleFileUpload(){
