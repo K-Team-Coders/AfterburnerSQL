@@ -1,6 +1,6 @@
 from django.apps import AppConfig
-# import tensorflow as tf
-# from tensorflow import keras
+import tensorflow as tf
+from tensorflow import keras
 from django.conf import settings
 from loguru import logger
 import pandas as pd
@@ -15,7 +15,12 @@ class MainConfig(AppConfig):
     with open(os.path.join(settings.BASE_DIR.parent, 'models/operator_count_skolkovo_regressor.pkl'), 'rb') as f:
         operators_count_skolkovo_regressor = pkl.load(f)
 
-    # query_time_execution_model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR.parent, 'models/full_query_skolkovo_model.h5'))
+    full_query_skolkovo_decision_tree_regressor = 0
+    with open(os.path.join(settings.BASE_DIR.parent, 'models/full_query_skolkovo_decision_tree_regressor.pkl'), 'rb') as f:
+        full_query_skolkovo_decision_tree_regressor = pkl.load(f)
+
+
+    query_time_execution_model = tf.keras.models.load_model(os.path.join(settings.BASE_DIR.parent, 'models/full_query_skolkovo_model.h5'))
     logger.success('Query Time Execution model locked and loaded!')
 
     encoding_dataframe = pd.read_csv(os.path.join(settings.BASE_DIR.parent, 'data/encoding.csv'))

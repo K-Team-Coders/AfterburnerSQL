@@ -342,8 +342,32 @@ class predictQueryResponseTimeOperatorsCount(APIView):
     def get(self, request, query):
         logger.debug(query)
         query_list = str(query).lower().replace(',', ' ').split()
+        
         froms = query_list.count('from')
-        predicted_time = MainConfig.query_time_execution_model.predict(np.array([query_encoded_vector]))
+        joins = query_list.count('join')
+        intos = query_list.count('into')
+        
+        predicted_time = MainConfig.operators_count_skolkovo_regressor.predict(np.array([[froms, joins, intos]]))
+
+        logger.debug(predicted_time)
+        return JsonResponse({
+            "result": float(predicted_time)
+        })
+
+class predictQueryResponseTimeDesicionTree(APIView):
+    def get(self, request, query):
+        logger.debug(query)
+        query_list = str(query).replace(',', ' ').split()
+        query_encoded_vector = []
+        for item in query_list:
+            part_df = MainConfig.encoding_dataframe[MainConfig.encoding_dataframe['value'] == item.lower()]
+            if part_df.empty:
+                return JsonResponse({"result": 'incorrect id or operators not in low registery'})
+            else:
+                query_encoded_vector.append(float(part_df['code'].values[0]))
+        query_encoded_vector.extend([0.0] * (515 - len(query_encoded_vector))) 
+        logger.debug(query_encoded_vector)       
+        predicted_time = MainConfig.query_time_execution_model_decision_tree.predict(np.array([query_encoded_vector]))
 
         logger.debug(predicted_time[0][0])
         return JsonResponse({
