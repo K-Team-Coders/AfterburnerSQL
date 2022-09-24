@@ -245,12 +245,80 @@ class countUserActivity(APIView):
             logger.debug(path)
             default_storage.save(path, ContentFile(file_obj.read())) 
         
+        index_list = []
+        nodes = [] # [{'name': 'user'}, {'name':'user'}]
+        edges = [] # [{'source':0, 'target':0, 'realation':'into', 'value': 1}]
+
         dataframe = count_table_id(path)
-        logger.debug(dataframe)
+
+        for user in dataframe['id']:
+            nodes.append({'name':user})
+            
+            # help list
+            index_list.append(user)
+
+            part_df = dataframe[dataframe['id'] == user]
+            # FROM
+            froms = part_df['from'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+            # INTO
+            froms = part_df['into'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'into',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'into',
+                        'value': 1
+                    })    
+            # JOIN
+            froms = part_df['join'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })    
+            logger.debug(nodes)
+            logger.debug(edges)
+
         return JsonResponse({'status':2000})
 
 class predictQueryResponseTime(APIView):
-    def post(self, request, query):
+    def get(self, request, query):
         logger.debug(query)
         query_list = str(query).replace(',', ' ').split()
         query_encoded_vector = []
