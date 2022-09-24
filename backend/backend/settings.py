@@ -141,4 +141,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSV_ROOT = os.path.join(BASE_DIR, 'downloads')
 
-CSV_REPORT_ROOT = os.path.join(r'C:\Users\zhiti\Documents\GitHub\AfterburnerSQL\data')
+CSV_REPORT_ROOT = os.path.join(BASE_DIR.parent, 'data')
