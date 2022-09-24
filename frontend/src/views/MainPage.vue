@@ -449,12 +449,14 @@ export default {
               d.fx = null
               d.fy = null
             }
-          }),
-          handleFileUpload(){
-          this.file = this.$refs.file.files[0];
-        }
+          })
       })
-    }}}
+    },
+    handleFileUpload() {
+          this.file = this.$refs.file.files[0]
+        }
+  }
+}
 </script>
 
 <style>
