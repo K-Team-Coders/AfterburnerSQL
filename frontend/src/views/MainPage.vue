@@ -3,8 +3,22 @@
    <div class="bg-gradient-to-r from-cyan-500 to-pink-500">
    <div class="px-64">
     <div class="w-full h-screen bg-opacity-25 backdrop-blur bg-white/30 rounded shadow-2xl">
+        <form class="mt-3 flex items-center">
+                  <label class="block">
+                    <input accept=".csv" type="file" class="block w-full text-sm text-slate-500
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded-full file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-violet-50 file:text-violet-700
+                      hover:file:bg-violet-100
+                    " ref="file" v-on:change="handleFileUpload()" />
+                  </label>
+                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold ml-3 py-2 px-3 rounded-full" @click="submitFile()">
+                    Загрузить  
+                  </button>
+                </form>
       <div class="flex justify-center filearea">
-          Рассматриваемый файл: 
+          Рассматриваемый файл: {{file}}
       </div>
       <div class="grid grid-cols-3 col-auto mr-12">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
@@ -81,7 +95,10 @@
             </div>
             <!-- Chart built with Chart.js 3 -->
             <div class="flex justify-start mb-3 ml-24">
-               <ScatterChart></ScatterChart>
+               <ScatterChart
+               :tables1 = this.tables1
+               :into = this.into
+               :join = this.join></ScatterChart>
                 <div class ="flex justify-center w-full mt-12">
                     <p class="font-semibold text-2xl font-mono">Самая используемая хуйня^_^</p>
                 </div>
@@ -97,6 +114,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Navbar from '../components/Navbar.vue';
 import BarChart from '../components/charts/BarChart.vue';
 
@@ -105,7 +123,41 @@ import ScatterChart from '../components/charts/ScatterChart.vue';
 
 
 export default {
-components: { Navbar, BarChart, ScatterChart, BarChart, ScatterChart }
+components: { Navbar, BarChart, ScatterChart, BarChart, ScatterChart },
+data()
+{
+      return {
+        tables1: '',
+        from: '',
+        into:'',
+        join:'',
+
+      }
+    },
+  methods: 
+  {
+      submitFile(){
+            let formData = new FormData();
+            formData.append('file', this.file);
+            axios.post( 'http://127.0.0.1:8000/main/load_file/',
+                formData,
+                {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+              }
+            ).then(response => {
+                this.tables1 = response.data.tables
+                this.from = response.data.from
+                this.into = response.data.into
+                this.join = response.data.join
+               
+            });
+        },
+      handleFileUpload(){
+        this.file = this.$refs.file.files[0];
+      }
+    }
 }
 </script>
 

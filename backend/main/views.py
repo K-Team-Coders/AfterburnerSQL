@@ -102,6 +102,7 @@ class countTableUsability(APIView):
         
         path = 0
         file_objs = request.data.getlist('file')
+        print(request.data)
         for file_obj in file_objs:
             path = os.path.join(settings.CSV_ROOT, file_obj.name)
             logger.debug(path)

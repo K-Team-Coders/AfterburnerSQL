@@ -9,20 +9,7 @@
                   </div>    
               </div>
               <div>
-                <form class="mt-3 flex items-center">
-                  <label class="block">
-                    <input accept=".csv" type="file" class="block w-full text-sm text-slate-500
-                      file:mr-4 file:py-2 file:px-4
-                      file:rounded-full file:border-0
-                      file:text-sm file:font-semibold
-                      file:bg-violet-50 file:text-violet-700
-                      hover:file:bg-violet-100
-                    " ref="file" v-on:change="handleFileUpload()" />
-                  </label>
-                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold ml-3 py-2 px-3 rounded-full" @click="submitFile()">
-                    Загрузить  
-                  </button>
-                </form>
+              
               </div>
           </div>
       </nav>
@@ -32,6 +19,8 @@
 <script>
 import  axios from 'axios'
 export default {
+  props: ['file',
+],
   data(){
       return {
         file: ''

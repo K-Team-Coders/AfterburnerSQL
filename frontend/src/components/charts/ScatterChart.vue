@@ -9,10 +9,14 @@
     :styles="styles"
     :width="width"
     :height="height"
+    :tables1="tables1"
+    :into="into"
+    :join="join"
   />
 </template>
 
 <script>
+import HomeView from '@/views/HomeView.vue' 
 import { Scatter } from 'vue-chartjs'
 
 import {
@@ -69,7 +73,12 @@ export default {
     plugins: {
       type: Array,
       default: () => []
-    }
+    },
+    tables1: '',
+    join: '',
+    from: '',
+    into: '',
+    
   },
   data() {
     return {
@@ -80,27 +89,7 @@ export default {
             fill: false,
             borderColor: '#887BB5',
             backgroundColor: '#4528A4',
-            data: [
-              {
-                x: -2,
-                y: 4
-              },
-              {
-                x: -1,
-                y: 1
-              },
-              {
-                x: 0,
-                y: 0
-              },
-              {
-                x: 1,
-                y: 1
-              },
-              {
-                x: 2,
-                y: 4
-              }
+            data: [ {1.2, 4.5}
             ]
           },
           {
@@ -109,26 +98,6 @@ export default {
             borderColor: '#f87979',
             backgroundColor: '#FF3F3F',
             data: [
-              {
-                x: -2,
-                y: 4
-              },
-              {
-                x: -1,
-                y: 1
-              },
-              {
-                x: 0,
-                y: 0
-              },
-              {
-                x: 1,
-                y: 1
-              },
-              {
-                x: 2,
-                y: 4
-              }
             ]
           },
           {
