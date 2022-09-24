@@ -17,9 +17,9 @@
                       file:text-sm file:font-semibold
                       file:bg-violet-50 file:text-violet-700
                       hover:file:bg-violet-100
-                    "/>
+                    " ref="file" v-on:change="handleFileUpload()" />
                   </label>
-                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold ml-3 py-2 px-3 rounded-full">
+                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold ml-3 py-2 px-3 rounded-full" @click="submitFile()">
                     Загрузить  
                   </button>
                 </form>
@@ -30,9 +30,36 @@
 </template>
 
 <script>
+import  axios from 'axios'
 export default {
-
-}
+  data(){
+      return {
+        file: ''
+      }
+    },
+  methods: {
+      submitFile(){
+            let formData = new FormData();
+            formData.append('file', this.file);
+            axios.post( '/single-file',
+                formData,
+                {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+              }
+            ).then(function(){
+          console.log('SUCCESS!!');
+        })
+        .catch(function(){
+          console.log('FAILURE!!');
+        });
+      },
+      handleFileUpload(){
+        this.file = this.$refs.file.files[0];
+      }
+    }
+  }
 </script>
 
 <style>
