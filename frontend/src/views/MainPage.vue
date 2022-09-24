@@ -3,9 +3,8 @@
    <div class="bg-gradient-to-r from-cyan-500 to-pink-500">
    <div class="px-64">
     <div class="w-full h-screen bg-opacity-25 backdrop-blur bg-white/30 rounded shadow-2xl">
-      <div class="flex justify-center">
-        <span class="py-8 flex text-3xl font-bsold text-gray-100 hover:text-pink-300">
-          Рассматриваемый файл:
+      <div class="flex justify-center filearea">
+          Рассматриваемый файл: 
       </div>
       <div class="grid grid-cols-3 col-auto mr-12">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
@@ -13,8 +12,8 @@
            </div>
            <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
-                 <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 1</div>
-                 <p class="text-gray-700 text-base">Жора будет всегда сытым</p>
+                 <div iv class="text-gray-900 font-bold text-xl mb-2">Подсчет запросов к таблицам</div>
+                 <p class="text-gray-700 text-base">Позволяет проанализировать общее количество запросов к таблице.</p>
               </div>
            </div>
         </div>
@@ -23,8 +22,8 @@
           </div>
           <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
              <div class="mb-8">
-                <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 2</div>
-                <p class="text-gray-700 text-base">Захар перестанет быть куколдом</p>
+                <div iv class="text-gray-900 font-bold text-xl mb-2">Подсчет по запросам от разработчиков</div>
+                <p class="text-gray-700 text-base">Позволяет выявить наиболее активных разработчиков, и тех кто единожды загрузил данные</p>
              </div>
           </div>
        </div>
