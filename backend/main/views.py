@@ -312,10 +312,11 @@ class countUserActivity(APIView):
                         'relation': 'from',
                         'value': 1
                     })    
-            logger.debug(nodes)
-            logger.debug(edges)
 
-        return JsonResponse({'status':2000})
+        return JsonResponse({
+            'nodes':nodes,
+            'edges': edges
+            })
 
 class predictQueryResponseTime(APIView):
     def get(self, request, query):
@@ -330,6 +331,18 @@ class predictQueryResponseTime(APIView):
                 query_encoded_vector.append(float(part_df['code'].values[0]))
         query_encoded_vector.extend([0.0] * (515 - len(query_encoded_vector))) 
         logger.debug(query_encoded_vector)       
+        predicted_time = MainConfig.query_time_execution_model.predict(np.array([query_encoded_vector]))
+
+        logger.debug(predicted_time[0][0])
+        return JsonResponse({
+            "result": float(predicted_time[0][0])
+        })
+
+class predictQueryResponseTimeOperatorsCount(APIView):
+    def get(self, request, query):
+        logger.debug(query)
+        query_list = str(query).lower().replace(',', ' ').split()
+        froms = query_list.count('from')
         predicted_time = MainConfig.query_time_execution_model.predict(np.array([query_encoded_vector]))
 
         logger.debug(predicted_time[0][0])
