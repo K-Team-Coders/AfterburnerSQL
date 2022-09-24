@@ -111,7 +111,8 @@
                                     <p class="font-semibold text-xl font-corme tracking-widest">Самая востребованная таблица</p>
                                  </div>
                                  <div class="flex justify-center">
-                                    <p class="font-semibold text-6xl font-rale tracking-widest hover:underline">{{this.most_wanted_count}}</p>
+                                  <p class="font-semibold text-6xl font-rale tracking-widest ">{{this.most_wanted_name}}</p>
+                                    <p class="font-italic text-1xl font-rale tracking-widest ">{{this.most_wanted_count}} обращений</p>
                                  </div>
                               </div>
                            </div>
@@ -295,7 +296,8 @@ data()
                 { headers: {
                     'Content-Type': 'multipart/form-data'
                     }
-                  }).then(response => {this.a = response.data})
+                  }).then(response => {
+                    this.data.nodes = response.data.nodes})
               })
           },
       handleFileUpload(){
