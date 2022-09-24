@@ -1,275 +1,119 @@
 <template>
-<div class="mainback">
-    <NavbarVue></NavbarVue>
-    <div class="container-fluid background shadow-lg mt-5"
-    style="width: 80%;">
-        <div class="row">
-            <h1 class="bg-danger maintext text-center mt-4">АВТОМАТИЗИРОВАННАЯ СИСТЕМА ПОИСКА ХРЮШЕК У СТАСА БАРЕЦКОГО ЭАЭАЭАЭ</h1>
-            <div class="col">
-                <img src="../assets/logo2.svg" width="500px"
-                height="500px" class="rounded mx-auto d-block"
-                />
-            </div>
-            <div class="col" style="margin-right: 50px;">
-                <div class="row">
-                    <div class="card shadow rounded">
-                        <div class="card-header">
-                            Загрузка воздуха Жоры
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Загрузите воздух не менее 100л</h5>
-                            <div class="input-group mb-3">
-                                <button class="btn btn-success btn-outline-dark"
-                                type="button"
-                                id="inputGroupFileAddon03">Загрузить</button>
-                                <input type="file" class="form-control" id="inputGroupFile03"
-                                aria-describedby="inputGroupFileAddon03"
-                                aria-label="Upload">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="card shadow rounded">
-                        <div class="card-header">
-                            Сливы шкур
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Загрузите нюдсы чей-то матери</h5>
-                            <div class="input-group mb-3">
-                                <button class="btn btn-success btn-outline-dark"
-                                type="button"
-                                id="inputGroupFileAddon03">Загрузить</button>
-                                <input type="file" class="form-control" id="inputGroupFile03"
-                                aria-describedby="inputGroupFileAddon03"
-                                aria-label="Upload">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+<div><Navbar></Navbar>
+   <div class="bg-gradient-to-r from-cyan-500 to-pink-500">
+   <div class="px-64">
+    <div class="w-full h-screen bg-opacity-25 backdrop-blur bg-white/30 rounded drop-shadow-lg ">
+      <div class="flex justify-center">
+        <span class="py-8 flex text-3xl font-bsold text-gray-100 hover:text-pink-300">
+          Рассматриваемый файл:
+        </span>
+      </div>
+      <div class="grid grid-cols-3">
+        <div class="max-w-sm w-full lg:max-w-full lg:flex">
+           <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+           </div>
+           <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+              <div class="mb-8">
+                 <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 1</div>
+                 <p class="text-gray-700 text-base">Жора будет всегда сытым</p>
+              </div>
+           </div>
         </div>
-        <div class="container mt-3">
-            <div class="wrapper row">
-                <h1 class="maintext text-center mt-4">Возможности сервиса</h1>
-                <div class="col">
-                    <div class="floppa">
-                        <div class="flipper">
-                            <div class="front">
-                                <div class="header">
-                                    <i class="fa fa-creative-commons fa-2x"></i>
-                                    <h3>ГРАФ ЖОРЫ</h3>
-                                </div>
-                                <img height="75%" src="../assets/pig2.jpg">
+        <div class="max-w-sm w-full lg:max-w-full lg:flex">
+          <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
+          </div>
+          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+             <div class="mb-8">
+                
+                   
+                <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 2</div>
+                <p class="text-gray-700 text-base">Захар перестанет быть куколдом</p>
+             </div>
+          </div>
+       </div>
+       <div class="max-w-sm w-full lg:max-w-full lg:flex">
+        <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+        </div>
+        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+           <div class="mb-8">
+            
+              <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 3</div>
+              <p class="text-gray-700 text-base">Игорь найдет девушку выше 170см</p>
+           </div>
+        </div>
+     </div>
+     </div>
+     <div class="grid grid-cols-1">
+      <!-- Snippet -->
+<div class="flex flex-col justify-center antialiased text-gray-600 min-h-screen h-screen">
+    <div class="max-w-3xl mx-auto p-4 sm:px-6 h-full">
+        <!-- Chart widget -->
+        <div class="flex flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
+            <header class="px-5 py-4 border-b border-gray-100 flex items-center">
+                <h2 class="font-semibold text-gray-800">Общее описание логов</h2>
+            </header>
+            <div class="px-1 py-1">
+                <div class="flex flex-wrap">
+                    <!-- Unique Visitors -->
+                    <div class="flex items-center py-2">
+                        <div class="mr-1">
+                            <div class="flex items-center">
+                                <div class="text-3xl font-bold text-gray-800 mr-2">24.7K</div>
                             </div>
-                            <div class="back">
-                                <h3>ГРАФ ЖОРЫ</h3>
-                                <p>Он их ест?????</p>
-                            </div>
+                            <div class="text-sm text-gray-500">Количество запросов к таблицам</div>
                         </div>
+                        <div class="hidden md:block w-px h-8 bg-gray-200 mr-5" aria-hidden="true"></div>
+                    </div>
+                    <!-- Total Pageviews -->
+                    <div class="flex items-center py-2">
+                        <div class="mr-1">
+                            <div class="flex items-center">
+                                <div class="text-3xl font-bold text-gray-800 mr-2">56.9K</div>
+                            </div>
+                            <div class="text-sm text-gray-500">Количество запросов разработчиков</div>
+                        </div>
+                        <div class="hidden md:block w-px h-8 bg-gray-200 mr-5" aria-hidden="true"></div>
+                    </div>
+                    <!-- Bounce Rate -->
+                    <div class="flex items-center py-2">
+                        <div class="mr-5">
+                            <div class="flex items-center">
+                                <div class="text-3xl font-bold text-gray-800 mr-2">54K</div>
+                                <div class="text-sm font-medium text-yellow-500"></div>
+                            </div>
+                            <div class="text-sm text-gray-500">Количество запросов загрузчиков</div>
+                        </div>
+                        <div class="hidden md:block w-px h-8 bg-gray-200 mr-5" aria-hidden="true"></div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="floppa">
-                        <div class="flipper">
-                            <div class="front">
-                                <div class="header">
-                                    <i class="fa fa-creative-commons fa-2x"></i>
-                                    <h3>ВИЧ-ИНФЕКЦИЯ ЗАХАРА</h3>
-                                </div>
-                                <img height="75%" src="../assets/penis.svg">
-                            </div>
-                            <div class="back">
-                                <h3>ВИЧ-ИНФЕКЦИЯ ЗАХАРА</h3>
-                                <p>Наконец Захар
-                                    умер
-                                    :)
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="floppa">
-                        <div class="flipper">
-                            <div class="front">
-                                <div class="header">
-                                    <i class="fa fa-creative-commons fa-2x"></i>
-                                    <h3>АРТЕМ ЗАЩЕМЛЕННЫЙ</h3>
-                                </div>
-                                <img height="75%" src="../assets/art.png">
-                            </div>
-                            <div class="back">
-                                <h3>АРТЕМ ЗАЩЕМЛЕННЫЙ</h3>
-                                <p>Артем. НАХУЯ.
-                                    ТЫ. Защемил!?</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <!-- Chart built with Chart.js 3 -->
+            <div class="flex">
+               <ScatterChart></ScatterChart>
             </div>
         </div>
     </div>
-    <footer>
-
-        <div class="bg-dark text-light">О нас: Мы работаем тут <img height="64px" src="../assets/fsb.png">
-        </div>
-    </footer>
 </div>
+</div>
+     </div>
+    </div>
+   </div>
+   </div>
 </template>
 
 <script>
-import NavbarVue from '../components/Navbar.vue'
+import Navbar from '../components/Navbar.vue';
+import BarChart from '../components/charts/BarChart.vue';
+
+import ScatterChart from '../components/charts/ScatterChart.vue';
+
+
+
 export default {
-components: { NavbarVue }
+components: { Navbar, BarChart, ScatterChart, BarChart, ScatterChart }
 }
 </script>
 
 <style>
-.maintext {
-  background-image: linear-gradient(
-    to right,
-    #36b336,
-    #1b693e 50%,
-    #000 50%
-  );
-  background-size: 200% 100%;
-  background-position: -100%;
-  display: inline-block;
-  padding: 5px 0;
-  position: relative;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease-in-out;
-}
 
-.maintext:before{
-  content: '';
-  background: #0d5f05;
-  display: block;
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  transition: all 0.3s ease-in-out;
-}
-
-.maintext:hover {
- background-position: 0;
-}
-
-.maintext:hover::before{
-  width: 100%;
-}
-
-
-
-.background{
-  background-color: rgba(255, 255, 255, 0.849);
-}
-
-.mainback {
-  background-image: url('../assets/artbk2.jpg');
-}
-
-.floppa {
-  text-align: center;
-  width: 320px;
-  margin: 20px auto;
-  -webkit-perspective: 1200;
-  perspective: 1200;
-  -moz-transform: perspective(1200px);
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d; 
-  transform-style: preserve-3d;
-}
-.flipper {
-  position: relative;
-  width: 320px;
-  height: 280px;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transition: .7s linear;
-  -moz-transition: .7s linear;
-  -o-transition: .7s linear;
-  transition: .7s linear;  
-}
-.front, .back {
-  box-sizing: border-box;
-  font-family: 'Cabin', sans-serif;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 2px 1px 1px;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-.front {
-  z-index: 2;
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-  transform: rotateY(0deg);
-  background: rgba(255, 255, 255, 0);
-  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #f5f5f500;
-}
-i {
-  color: #DCB8B2;
-  display: inline-block;
-  margin-bottom: 15px;
-}
-h3 {
-  font-size: 16px;
-  line-height: 20px;
-  text-transform: uppercase;
-  margin: 0 0 15px;
-}
-p {
-  font-size: 14px;
-  line-height: 25px;
-}
-.header h3 {
-  color: #18191a;
-}
-.front p {
-  color: #818285;
-}
-.back {
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-  background: #116e1894;
-  color: white;
-}
-.back h3 {
-  position: relative;
-}
-.back h3:after {
-  content: "";
-  width: 50px;
-  height: 1px;
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  background: white;
-  margin-left: -25px;
-}
-.back p {
-  padding-top: 15px;
-}
-.floppa:hover .flipper{
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
 </style>
