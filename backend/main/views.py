@@ -110,10 +110,35 @@ class countTableUsability(APIView):
         
         dataframe = count_table_query(path)
         logger.debug(dataframe)
+        
+        ready_joins = []
+        ready_intos = []
+        ready_froms = []
+
+        names = dataframe['table_name'].to_list()
+        froms = dataframe['from'].to_list()
+        joins = dataframe['join'].to_list()
+        intos = dataframe['into'].to_list()
+
+        for index in range(len(names)):
+            ready_joins.append({
+                'x':names[index],
+                'y':joins[index]
+            })
+            ready_froms.append({
+                'x':names[index],
+                'y':froms[index]
+            })
+            ready_intos.append({
+                'x':names[index],
+                'y':intos[index]
+            })
+
 
         return JsonResponse({
-            'tables': dataframe['table_name'].to_list(),
-            'from': dataframe['from'].to_list(),
-            'join': dataframe['join'].to_list(),
-            'into': dataframe['into'].to_list()
+            'from': ready_joins,
+            'join': ready_joins,
+            'into': ready_intos
         })
+
+# class count

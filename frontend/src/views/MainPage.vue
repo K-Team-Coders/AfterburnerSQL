@@ -18,7 +18,9 @@
                   </button>
                 </form>
       <div class="flex justify-center filearea">
-          Рассматриваемый файл: {{file}}
+        <span class="py-8 flex text-4xl font-bold font-corme">
+          Рассматриваемый файл:
+        </span>
       </div>
       <div class="grid grid-cols-3 col-auto mr-12">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
@@ -26,8 +28,8 @@
            </div>
            <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
-                 <div iv class="text-gray-900 font-bold text-xl mb-2">Подсчет запросов к таблицам</div>
-                 <p class="text-gray-700 text-base">Позволяет проанализировать общее количество запросов к таблице.</p>
+                 <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет запросов к таблицам</div>
+                 <p class="text-gray-700 text-xl font-rale text-center">Позволяет проанализировать общее количество запросов к таблице.</p>
               </div>
            </div>
         </div>
@@ -36,8 +38,8 @@
           </div>
           <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
              <div class="mb-8">
-                <div iv class="text-gray-900 font-bold text-xl mb-2">Подсчет по запросам от разработчиков</div>
-                <p class="text-gray-700 text-base">Позволяет выявить наиболее активных разработчиков, и тех кто единожды загрузил данные</p>
+                <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет по запросам от разработчиков</div>
+                <p class="text-gray-700 text-xl font-rale text-center">Позволяет выявить наиболее активных разработчиков, и тех кто единожды загрузил данные</p>
              </div>
           </div>
        </div>
@@ -46,8 +48,8 @@
         </div>
         <div class="border-r border-b border-l w-full shadow-xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
            <div class="mb-8">
-              <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 3</div>
-              <p class="text-gray-700 text-base">Игорь найдет девушку выше 170см</p>
+              <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Функция 3</div>
+              <p class="text-gray-700 text-xl font-rale text-center">Ждите, скоро появится ^_^</p>
            </div>
         </div>
      </div>
@@ -59,48 +61,50 @@
         <!-- Chart widget -->
         <div class="flex w-full flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100 items-center">
-                <h2 class="font-bold text-xl text-gray-800 text-center ">Общее описание логов</h2>
+                <h2 class="font-bold text-3xl text-gray-800 text-center font-rale tracking-widest">Общее описание логов</h2>
             </header>
-            <div class="flex justify-center px-1 py-2 ml-24">
+            <div class="flex justify-center px-1 py-2 ml-16">
                 <div class="flex">
                     <!-- Unique Visitors -->
-                    <div class="flex items-center py-2 mr-12">
+                    <div class="flex items-center py-2 mr-6">
                         <div class="mr-1">
                             <div class="flex items-center justify-center">
                                 <div class="text-3xl font-bold text-gray-800 mr-2">24.7K</div>
                             </div>
-                            <div class="text-sm text-gray-500">Количество запросов к таблицам</div>
+                            <div class="text-lg text-gray-500 font-corme">Количество запросов к таблицам</div>
                         </div>
                     </div>
                     <!-- Total Pageviews -->
-                    <div class="flex items-center py-2 mr-12">
+                    <div class="flex items-center py-2 mr-6">
                         <div class="mr-1">
                             <div class="flex items-center justify-center">
                                 <div class="text-3xl font-bold text-gray-800 mr-2">56.9K</div>
                             </div>
-                            <div class="text-sm text-gray-500">Количество запросов разработчиков</div>
+                            <div class="text-lg text-gray-500 font-corme">Количество запросов разработчиков</div>
                         </div>
                     </div>
                     <!-- Bounce Rate -->
-                    <div class="flex items-center py-2 mr-12">
+                    <div class="flex items-center py-2">
                         <div class="mr-5">
                             <div class="flex items-center justify-center">
                                 <div class="text-3xl font-bold text-gray-800 mr-2">54K</div>
                                 <div class="text-sm font-medium text-yellow-500"></div>
                             </div>
-                            <div class="text-sm text-gray-500">Количество запросов загрузчиков</div>
+                            <div class="text-lg text-gray-500 font-corme">Количество запросов загрузчиков</div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Chart built with Chart.js 3 -->
-            <div class="flex justify-start mb-3 ml-24">
-               <ScatterChart
-               :tables1 = this.tables1
-               :into = this.into
-               :join = this.join></ScatterChart>
-                <div class ="flex justify-center w-full mt-12">
-                    <p class="font-semibold text-2xl font-mono">Самая используемая хуйня^_^</p>
+            <div class="flex justify-start mb-3 ml-12">
+               <ScatterChart></ScatterChart>
+                <div class="container">
+                    <div class ="flex justify-center mt-32">
+                        <p class="font-semibold text-xl font-corme tracking-widest">Самая используемая таблица</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <p class="font-semibold text-6xl font-rale tracking-widest">2048 записей</p>
+                    </div>
                 </div>
             </div>
         </div>
