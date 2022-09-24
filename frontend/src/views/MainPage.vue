@@ -185,16 +185,22 @@ props: {
       type: Array,
       default: () => []
     },
-    
+    into: {
+      type: Array,
+      default: () => []
+    },
+    join: {
+      type: Array,
+      default: () => []
+    },    
+    from: {
+      type: Array,
+      default: () => []
+    },
   },
 data()
 {
       return {
-
-        tables1: '',
-        from: '',
-        into:'',
-        join:'',
         chartData: {
         datasets: [
           {
@@ -210,36 +216,14 @@ data()
             fill: false,
             borderColor: '#f87979',
             backgroundColor: '#FF3F3F',
-            data: [
-            ]
+            data: [ this.into ]
           },
           {
             label: 'FROM',
             fill: false,
             borderColor: '#23D323',
             backgroundColor: '#23D323',
-            data: [
-              {
-                x: -2,
-                y: -4
-              },
-              {
-                x: -1,
-                y: -1
-              },
-              {
-                x: 0,
-                y: 1
-              },
-              {
-                x: 1,
-                y: -1
-              },
-              {
-                x: 2,
-                y: -4
-              }
-            ]
+            data: [ this.from ]
           }
         ]
       },
@@ -262,7 +246,7 @@ data()
       submitFile(){
             let formData = new FormData();
             formData.append('file', this.file);
-            axios.post( 'http://127.0.0.1:8000/main/load_file/',
+            axios.post( 'http://127.0.0.1:8000/main/load_file_tables/',
                 formData,
                 {
                 headers: {
@@ -270,11 +254,9 @@ data()
                 }
               }
             ).then(response => {
-                this.tables1 = response.data.tables
-                this.from = response.data.from
-                this.into = response.data.into
-                this.join = response.data.join
-               console.log(this.join)
+                this.$data.chartData.datasets[0].data = response.data.join
+                this.$data.chartData.datasets[1].data = response.data.into
+                this.$data.chartData.datasets[2].data = response.data.from
             });
         },
       handleFileUpload(){

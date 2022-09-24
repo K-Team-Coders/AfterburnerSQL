@@ -90,16 +90,14 @@ export default {
             fill: false,
             borderColor: '#887BB5',
             backgroundColor: '#4528A4',
-            data: [ join
-            ]
+            data: [ {x:23, y:234} ]
           },
           {
             label: 'INTO',
             fill: false,
             borderColor: '#f87979',
             backgroundColor: '#FF3F3F',
-            data: [
-            ]
+            data: [ {x: 34, y:245} ]
           },
           {
             label: 'FROM',
