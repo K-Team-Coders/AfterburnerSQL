@@ -76,10 +76,10 @@ export default {
       chartData: {
         datasets: [
           {
-            label: 'Scatter Dataset 1',
+            label: 'SELECT',
             fill: false,
-            borderColor: '#f87979',
-            backgroundColor: '#f87979',
+            borderColor: '#887BB5',
+            backgroundColor: '#4528A4',
             data: [
               {
                 x: -2,
@@ -104,10 +104,38 @@ export default {
             ]
           },
           {
-            label: 'Scatter Dataset 2',
+            label: 'INTO',
             fill: false,
-            borderColor: '#7acbf9',
-            backgroundColor: '#7acbf9',
+            borderColor: '#f87979',
+            backgroundColor: '#FF3F3F',
+            data: [
+              {
+                x: -2,
+                y: 4
+              },
+              {
+                x: -1,
+                y: 1
+              },
+              {
+                x: 0,
+                y: 0
+              },
+              {
+                x: 1,
+                y: 1
+              },
+              {
+                x: 2,
+                y: 4
+              }
+            ]
+          },
+          {
+            label: 'FROM',
+            fill: false,
+            borderColor: '#23D323',
+            backgroundColor: '#23D323',
             data: [
               {
                 x: -2,
@@ -135,7 +163,15 @@ export default {
       },
       chartOptions: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        onClick: (e) => {
+            const canvasPosition = ChartJS.helpers.getRelativePosition(e, chart);
+
+            // Substitute the appropriate scale IDs
+            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+            const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
+            console.log('Haaa')
+        }
       }
     }
   }
