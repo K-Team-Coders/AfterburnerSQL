@@ -123,10 +123,10 @@ class countTableUsability(APIView):
         joins_sum = sum(joins)
         intos_sum = sum(intos)
 
-        most_wanted = {}
+        most_wanted = 0
         maximum = 0
         for index in range(len(names)):
-            if (froms[index] + joins[index] + intos[index]) < maximum:
+            if (froms[index] + joins[index] + intos[index]) > maximum:
                 maximum = froms[index] + joins[index] + intos[index]
                 most_wanted = {
                     'count': maximum,
@@ -145,7 +145,6 @@ class countTableUsability(APIView):
                 'x':names[index],
                 'y':intos[index]
             })
-
 
         return JsonResponse({
             'from': ready_joins,
