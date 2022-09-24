@@ -19,7 +19,7 @@
                       hover:file:bg-violet-100
                     "/>
                   </label>
-                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold py-2 px-4 rounded-full">
+                  <button class="bg-violet-50 hover:bg-violet-100 text-violet-700 font-bold ml-3 py-2 px-3 rounded-full">
                     Загрузить  
                   </button>
                 </form>

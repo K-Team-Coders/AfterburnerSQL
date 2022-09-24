@@ -8,11 +8,11 @@
           Рассматриваемый файл:
         </span>
       </div>
-      <div class="grid grid-cols-3">
+      <div class="grid grid-cols-3 col-auto mr-12">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
            <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
            </div>
-           <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+           <div class="border-r border-b border-l w-full border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
                  <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 1</div>
                  <p class="text-gray-700 text-base">Жора будет всегда сытым</p>
@@ -22,10 +22,8 @@
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
           <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" >
           </div>
-          <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+          <div class="border-r border-b border-l w-full border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
              <div class="mb-8">
-                
-                   
                 <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 2</div>
                 <p class="text-gray-700 text-base">Захар перестанет быть куколдом</p>
              </div>
@@ -34,9 +32,8 @@
        <div class="max-w-sm w-full lg:max-w-full lg:flex">
         <div class="h-48 lg:h-auto lg:w-12 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
         </div>
-        <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="border-r border-b border-l w-full border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
            <div class="mb-8">
-            
               <div iv class="text-gray-900 font-bold text-xl mb-2">Функция ебать 3</div>
               <p class="text-gray-700 text-base">Игорь найдет девушку выше 170см</p>
            </div>
@@ -45,14 +42,14 @@
      </div>
      <div class="grid grid-cols-1">
       <!-- Snippet -->
-<div class="flex flex-col justify-center antialiased text-gray-600 min-h-screen h-screen">
-    <div class="max-w-3xl mx-auto p-4 sm:px-6 h-full">
+<div class="flex justify-center text-gray-600">
+    <div class="w-3/4 p-4 sm:px-6">
         <!-- Chart widget -->
-        <div class="flex flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
-            <header class="px-5 py-4 border-b border-gray-100 flex items-center">
-                <h2 class="font-semibold text-gray-800">Общее описание логов</h2>
+        <div class="flex w-full flex-col col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
+            <header class="px-5 py-4 border-b border-gray-100 items-center">
+                <h2 class="font-bold text-xl text-gray-800 text-center ">Общее описание логов</h2>
             </header>
-            <div class="px-1 py-1">
+            <div class="flex justify-center px-1 py-2 ">
                 <div class="flex flex-wrap">
                     <!-- Unique Visitors -->
                     <div class="flex items-center py-2">
@@ -88,7 +85,7 @@
                 </div>
             </div>
             <!-- Chart built with Chart.js 3 -->
-            <div class="flex">
+            <div class="flex justify-center mb-3 ">
                <ScatterChart></ScatterChart>
             </div>
         </div>
