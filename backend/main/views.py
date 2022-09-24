@@ -119,7 +119,20 @@ class countTableUsability(APIView):
         joins = dataframe['join'].to_list()
         intos = dataframe['into'].to_list()
 
+        froms_sum = sum(froms)
+        joins_sum = sum(joins)
+        intos_sum = sum(intos)
+
+        most_wanted = {}
+        maximum = 0
         for index in range(len(names)):
+            if (froms[index] + joins[index] + intos[index]) < maximum:
+                maximum = froms[index] + joins[index] + intos[index]
+                most_wanted = {
+                    'count': maximum,
+                    'table': names[index]
+                }
+
             ready_joins.append({
                 'x':names[index],
                 'y':joins[index]
@@ -137,11 +150,14 @@ class countTableUsability(APIView):
         return JsonResponse({
             'from': ready_joins,
             'join': ready_joins,
-            'into': ready_intos
+            'into': ready_intos,
+            'sum_into': intos_sum,
+            'sum_joins': joins_sum,
+            'sum_froms': froms_sum,
+            'most_wanted': most_wanted
         })
 
 class countUserActivity(APIView):
-
     def post(self, request):
         def count_table_query(table_name):
             df = pd.read_csv(table_name)
