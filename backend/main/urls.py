@@ -4,5 +4,5 @@ from .views import *
 
 urlpatterns = [
     path('load_file_tables/', countTableUsability.as_view()),
-    path('load_file_user/', countUserActivity.as_view())
+    path('load_file_users/', countUserActivity.as_view())
 ]

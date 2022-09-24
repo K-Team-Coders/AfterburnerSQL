@@ -159,7 +159,7 @@ class countTableUsability(APIView):
 
 class countUserActivity(APIView):
     def post(self, request):
-        def count_table_query(table_name):
+        def count_table_id(table_name):
             df = pd.read_csv(table_name)
             eng_stopwords=stopwords.words("english")
             eng_stopwords.extend(['…', '«', '»', '...',';',',','tbl'])
@@ -182,19 +182,18 @@ class countUserActivity(APIView):
                 return [int(item) for item in numr]
             def remove_numbers(text):
                 return ''.join([i if not i.isdigit() else ' ' for i in text])
-            preproccessing = lambda text: (remove_multiple_spaces(remove_numbers(remove_punctuation(text))))
-            df['type'] = list(map(preproccessing, df['query']))
             preproccessing = lambda text: (drop_words(remove_multiple_spaces(remove_punctuation(text))))
             df['preproccessed'] = list(map(preproccessing, df['query']))
-            x=df['preproccessed']
-            x = np.concatenate(x) #список всех таблиц с запросов
-            uniq=list(set(x)) #список всех уникальных таблиц
             total = df['query']
             data=list()
+            i=0
             for query in total.to_list():
                 data.append(query.replace("tbl_", '').replace(',', ' ').split())
+            uniq=list(set(df['loguser']))
+            log=list(df['loguser'])
             name=list()
             tab=list()
+            user=list()
             j=0
             while j<len(data):
                 i=0
@@ -203,30 +202,32 @@ class countUserActivity(APIView):
                         name.append(data[j][i])
                     else:
                         tab.append(data[j][i])
+                    if i%2 == 1:
+                        user.append(log[j])
                     i+=1
                 j+=1
-            result = pd.DataFrame(columns = ['table_name', 'from', 'join', 'into'])
+            result = pd.DataFrame(columns = ['id', 'from', 'join', 'into'])
 
             s=0
             while s<len(uniq):
-                fro=0
-                into=0
-                join=0
+                fro=list()
+                into=list()
+                join=list()
                 t=0
                 while t<len(tab):
-                    if uniq[s] == int(tab[t]):
+                    if uniq[s] == user[t]:
                         if (name[t] == 'from') or (name[t] == 'FROM') or (name[t] == 'From'):
-                            fro+=1
+                            fro.append(tab[t])
                         if (name[t] == 'into') or (name[t] == 'INTO'):
-                            into+=1
+                            into.append(tab[t])
                         if (name[t] == 'join') or (name[t] == 'JOIN'):
-                            join+=1
+                            join.append(tab[t])
                     t+=1
 
                 result = result.append(
                     [
                         {
-                            'table_name':uniq[s], 
+                            'id':uniq[s], 
                             'from':fro, 
                             'join':into, 
                             'into':join
@@ -235,3 +236,14 @@ class countUserActivity(APIView):
                 )
                 s+=1
             return result
+        path = 0
+        logger.debug(request)
+        file_objs = request.data.getlist('file')
+        for file_obj in file_objs:
+            path = os.path.join(settings.CSV_ROOT, file_obj.name)
+            logger.debug(path)
+            default_storage.save(path, ContentFile(file_obj.read())) 
+        
+        dataframe = count_table_id(path)
+        logger.debug(dataframe)
+        return JsonResponse({'status':2000})

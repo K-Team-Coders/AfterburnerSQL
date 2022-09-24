@@ -257,8 +257,15 @@ data()
                 this.$data.chartData.datasets[0].data = response.data.join
                 this.$data.chartData.datasets[1].data = response.data.into
                 this.$data.chartData.datasets[2].data = response.data.from
-            });
-        },
+                
+                axios.post('http://127.0.0.1:8000/main/load_file_users/',                 
+                formData,
+                { headers: {
+                    'Content-Type': 'multipart/form-data'
+                    }
+                  }).then(response => {this.a = response.data})
+              })
+          },
       handleFileUpload(){
         this.file = this.$refs.file.files[0];
       }
