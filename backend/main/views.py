@@ -1,33 +1,28 @@
-from django.http import HttpResponse
+from time import sleep
+from django.http import HttpResponse, JsonResponse
+from django.core.files.storage import default_storage    
+from django.core.files.base import ContentFile
+from django.conf import settings
 
 from rest_framework.views import APIView
 
-from loguru import logger
-
-import pandas as pd
 import string
+from string import punctuation
+from loguru import logger
+import pandas as pd
+import numpy as np
 import nltk
+nltk.download('stopwords')
 import re
+import os
 from nltk.stem import *
 from nltk.corpus import stopwords
 from pymystem3 import Mystem
-from string import punctuation
-import numpy as np
-
-class testView(APIView):
-    def get(self, request):
-        logger.debug(request.body)
-        return HttpResponse(status=200)
-
-class loadFile(APIView):
-    def post(self, request):
-        logger.debug(request.FILES['files'])
-        return HttpResponse(status=200)
+from pathlib import Path
 
 class countTableUsability(APIView):
     def post(self, request):
-        logger.debug(request.FILES)
-        return HttpResponse(status=200)
+
         def count_table_query(table_name):
             df = pd.read_csv(table_name)
             eng_stopwords=stopwords.words("english")
@@ -104,7 +99,22 @@ class countTableUsability(APIView):
                 )
                 s+=1
 
-                if s % 10 == 0:
-                    result.to_csv(f'result_'+table_name)
+            result.to_csv(table_name+f'_result')
             return result
+        
+        path = 0
+        file_objs = request.data.getlist('file')
+        for file_obj in file_objs:
+            path = os.path.join(settings.CSV_ROOT, file_obj.name)
+            logger.debug(path)
+            default_storage.save(path, ContentFile(file_obj.read())) 
+        
+        dataframe = count_table_query(path)
+        logger.debug(dataframe)
 
+        return JsonResponse({
+            'tables': dataframe['table_name'].to_list(),
+            'from': dataframe['from'].to_list(),
+            'join': dataframe['join'].to_list(),
+            'into': dataframe['into'].to_list()
+        })
