@@ -3,10 +3,9 @@
    <div class="bg-gradient-to-r from-cyan-500 to-pink-500">
    <div class="px-64">
     <div class="w-full h-screen bg-opacity-25 backdrop-blur bg-white/30 rounded drop-shadow-lg ">
-      <div class="flex justify-center">
-        <span class="py-8 flex text-3xl font-bsold text-gray-100 hover:text-pink-300">
+      <div class="flex justify-center filearea">
           Рассматриваемый файл:
-        </span>
+        
       </div>
       <div class="grid grid-cols-3 col-auto mr-12">
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
@@ -112,5 +111,48 @@ components: { Navbar, BarChart, ScatterChart, BarChart, ScatterChart }
 </script>
 
 <style>
+.filearea {
+  background-image: linear-gradient(
+    to right,
+    #49005c,
+    #0f0061 50%,
+    rgb(255, 255, 255) 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.filearea:before{
+  content: '';
+  background: #22033f;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.filearea:hover {
+ background-position: 0;
+}
+
+.filearea:hover::before{
+  width: 100%;
+}
+.filearea {
+  display: grid;
+  font-family: 'Poppins', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  place-items: center;
+}
 
 </style>
