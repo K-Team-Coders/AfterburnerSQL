@@ -5,6 +5,8 @@ from django.conf import settings
 
 from rest_framework.views import APIView
 
+from .apps import MainConfig
+
 import string
 from string import punctuation
 from loguru import logger
@@ -246,3 +248,23 @@ class countUserActivity(APIView):
         dataframe = count_table_id(path)
         logger.debug(dataframe)
         return JsonResponse({'status':2000})
+
+class predictQueryResponseTime(APIView):
+    def post(self, request, query):
+        logger.debug(query)
+        query_list = str(query).replace(',', ' ').split()
+        query_encoded_vector = []
+        for item in query_list:
+            part_df = MainConfig.encoding_dataframe[MainConfig.encoding_dataframe['value'] == item.lower()]
+            if part_df.empty:
+                return JsonResponse({"result": 'incorrect id or operators not in low registery'})
+            else:
+                query_encoded_vector.append(float(part_df['code'].values[0]))
+        query_encoded_vector.extend([0.0] * (515 - len(query_encoded_vector))) 
+        logger.debug(query_encoded_vector)       
+        predicted_time = MainConfig.query_time_execution_model.predict(np.array([query_encoded_vector]))
+
+        logger.debug(predicted_time[0][0])
+        return JsonResponse({
+            "result": float(predicted_time[0][0])
+        })
