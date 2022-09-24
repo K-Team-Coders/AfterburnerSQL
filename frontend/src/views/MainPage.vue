@@ -301,7 +301,6 @@ mounted () {
     let g = svg.append('g')
       .attr('transform', 'translate(' + marge.top + ',' + marge.left + ')')
     // Node Dataset
-    // 节点集
     let nodes = [
       { name: '0' },
       { name: '1' },
@@ -350,12 +349,12 @@ mounted () {
         return d.value * 100
       })
     // Set drawing center location
-    // 设置图形中心位置
+    
     forceSimulation.force('center')
       .x(width / 2)
       .y(height / 2)
     // Draw side
-    // 绘制边
+    
     let links = g.append('g')
       .selectAll('line')
       .data(edges)
@@ -366,7 +365,7 @@ mounted () {
       })
       .attr('stroke-width', 1)
     // Text on side
-    // 边上的文字
+  
     let linksText = g.append('g')
       .selectAll('text')
       .data(edges)
@@ -376,7 +375,7 @@ mounted () {
         return d.relation
       })
     // Create group
-    // 创建分组
+   
     let gs = g.selectAll('.circleText')
       .data(nodes)
       .enter()
@@ -392,14 +391,14 @@ mounted () {
         .on('end', ended)
       )
     // Draw node
-    // 绘制节点
+    
     gs.append('circle')
       .attr('r', 10)
       .attr('fill', function (d, i) {
         return colorScale(i)
       })
     // Draw text
-    // 绘制文字
+    
     gs.append('text')
       .attr('x', -10)
       .attr('y', -20)
