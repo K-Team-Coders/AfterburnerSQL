@@ -17,38 +17,6 @@
 </template>
 
 <script>
-import  axios from 'axios'
-export default {
-  props: ['file',
-],
-  data(){
-      return {
-        file: ''
-      }
-    },
-  methods: {
-      submitFile(){
-            let formData = new FormData();
-            formData.append('file', this.file);
-            axios.post( 'http://127.0.0.1:8000/main/load_file/',
-                formData,
-                {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-              }
-            ).then(function(){
-          console.log('SUCCESS!!');
-        })
-        .catch(function(){
-          console.log('FAILURE!!');
-        });
-      },
-      handleFileUpload(){
-        this.file = this.$refs.file.files[0];
-      }
-    }
-  }
 </script>
 
 <style>
