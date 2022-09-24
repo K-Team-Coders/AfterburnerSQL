@@ -1,4 +1,3 @@
-from time import sleep
 from django.http import HttpResponse, JsonResponse
 from django.core.files.storage import default_storage    
 from django.core.files.base import ContentFile
@@ -22,7 +21,6 @@ from pathlib import Path
 
 class countTableUsability(APIView):
     def post(self, request):
-
         def count_table_query(table_name):
             df = pd.read_csv(table_name)
             eng_stopwords=stopwords.words("english")
