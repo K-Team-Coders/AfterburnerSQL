@@ -21,11 +21,13 @@ class testView(APIView):
 
 class loadFile(APIView):
     def post(self, request):
-        logger.debug(request.FILES)
+        logger.debug(request.FILES['files'])
+        return HttpResponse(status=200)
 
 class countTableUsability(APIView):
     def post(self, request):
         logger.debug(request.FILES)
+        return HttpResponse(status=200)
         def count_table_query(table_name):
             df = pd.read_csv(table_name)
             eng_stopwords=stopwords.words("english")

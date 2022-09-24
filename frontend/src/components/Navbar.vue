@@ -41,7 +41,7 @@ export default {
       submitFile(){
             let formData = new FormData();
             formData.append('file', this.file);
-            axios.post( '/single-file',
+            axios.post( 'http://127.0.0.1:8000/main/load_file/',
                 formData,
                 {
                 headers: {
