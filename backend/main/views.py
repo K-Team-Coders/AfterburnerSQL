@@ -372,9 +372,9 @@ class predictQueryResponseTimeDesicionTree(APIView):
                 query_encoded_vector.append(float(part_df['code'].values[0]))
         query_encoded_vector.extend([0.0] * (515 - len(query_encoded_vector))) 
         logger.debug(query_encoded_vector)       
-        predicted_time = MainConfig.query_time_execution_model_decision_tree.predict(np.array([query_encoded_vector]))
+        predicted_time = MainConfig.full_query_skolkovo_decision_tree_regressor.predict(np.array([query_encoded_vector]))
 
-        logger.debug(predicted_time[0][0])
+        logger.debug(predicted_time[0])
         return JsonResponse({
-            "result": float(predicted_time[0][0])
+            "result": float(predicted_time[0])
         })
