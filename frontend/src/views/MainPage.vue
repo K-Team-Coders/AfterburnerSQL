@@ -265,17 +265,9 @@ export default {
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
-        onClick: (e) => {
-          const canvasPosition = ChartJS.helpers.getRelativePosition(e, chart);
-
-          // Substitute the appropriate scale IDs
-          const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
-          const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
-          console.log('Haaa')
         }
       }
-    }
-  },
+    },
   methods:
   {
     submitFile() {
@@ -305,6 +297,10 @@ export default {
               'Content-Type': 'multipart/form-data'
             }
           }).then(response => {
+            let nodes2 = response.data.nodes1234
+            console.log(nodes2)
+            let edges = response.data.edges1234
+            console.log(edges)
             let marge = { top: 60, bottom: 60, left: 60, right: 60 }
             let svg = d3.select('svg')
             let width = svg.attr('width')
@@ -312,16 +308,12 @@ export default {
             let g = svg.append('g')
               .attr('transform', 'translate(' + marge.top + ',' + marge.left + ')')
             // Node Dataset
-            let nodes = response.data.nodes
-            console.log(nodes)
             // Side Dataset
             // 边集
-            let edges = response.data.edges
-            console.log(edges)
             // Set a color scale
             // 设置一个颜色比例尺
             let colorScale = d3.scaleOrdinal()
-              .domain(d3.range(nodes.length))
+              .domain(d3.range(nodes2.length))
               .range(d3.schemeCategory10)
             // Create a new force guide diagram
             // 新建一个力导向图
@@ -331,7 +323,7 @@ export default {
               .force('center', d3.forceCenter())
             // Generate node data
             // 生成节点数据
-            forceSimulation.nodes(nodes)
+            forceSimulation.nodes(nodes2)
               .on('tick', ticked)
             // Generate side data
             // 生成边数据
@@ -369,7 +361,7 @@ export default {
             // Create group
 
             let gs = g.selectAll('.circleText')
-              .data(nodes)
+              .data(nodes2)
               .enter()
               .append('g')
               .attr('transform', function (d) {

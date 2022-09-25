@@ -269,6 +269,7 @@ class countUserActivity(APIView):
                     })
                 else:
                     index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
                     edges.append({
                         'source':index_list.index(user),
                         'target':index_list.index(from_),
@@ -287,6 +288,7 @@ class countUserActivity(APIView):
                     })
                 else:
                     index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
                     edges.append({
                         'source':index_list.index(user),
                         'target':index_list.index(from_),
@@ -305,16 +307,20 @@ class countUserActivity(APIView):
                     })
                 else:
                     index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
                     edges.append({
                         'source':index_list.index(user),
                         'target':index_list.index(from_),
                         'relation': 'from',
                         'value': 1
-                    })    
+                    })
+
+        logger.debug(nodes[0])
+        logger.debug(edges[0])
 
         return JsonResponse({
-            'nodes':nodes,
-            'edges':edges
+            'nodes1234':nodes,
+            'edges1234':edges
             })
 
 class predictQueryResponseTime(APIView):
