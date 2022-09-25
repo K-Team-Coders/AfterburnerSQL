@@ -76,7 +76,7 @@
                       логов</h2>
                   </header>
                   <div class="flex justify-center px-1 py-2 ml-16">
-                    <h5 class="font-italic text-gray-800 text-center font-rale tracking-widest">{x: Названия таблиц; y: Количество обращений}</h5>
+                    <h5 class="flex font-italic text-gray-800 text-center font-rale tracking-widest justify-center mt-3">{x: Названия таблиц; y: Количество обращений}</h5>
                     <div class="flex">
                       <!-- Unique Visitors -->
                       <div class="flex items-center py-2 mr-6">
