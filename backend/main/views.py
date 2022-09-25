@@ -27,13 +27,13 @@ class Report(APIView):
         tables = os.path.join(settings.BASE_DIR.parent, 'data/tables_result.csv')
 
         users_df = pd.read_csv(users)
-        users_df.drop('Unnamed: 0', axis=1)
+        users_df = users_df.drop('Unnamed: 0', axis=1)
         users_df['join'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
         users_df['into'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
         users_df['from'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
 
         tables_df = pd.read_csv(tables)
-        tables.drop('Unnamed: 0', axis=1)
+        tables_df = tables_df.drop('Unnamed: 0', axis=1)
 
         logger.debug(users_df)
         logger.debug(tables_df)
