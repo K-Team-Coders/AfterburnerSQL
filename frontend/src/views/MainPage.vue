@@ -411,6 +411,12 @@ export default {
               d.fx = d.x
               d.fy = d.y
             }
+            let zoomHandler = d3.zoom()
+      .on('zoom', zoomActions)
+    zoomHandler(svg)
+            function zoomActions () {
+      g.attr('transform', d3.event.transform)
+    }
             function dragged(d) {
               d.fx = d3.event.x
               d.fy = d3.event.y
