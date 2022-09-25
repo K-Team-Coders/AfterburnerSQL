@@ -252,8 +252,7 @@ class countUserActivity(APIView):
         dataframe = count_table_id(path)
 
         for user in dataframe['id']:
-            nodes.append({'name':user})
-            
+            nodes.append({'name':f'{user}'})
             # help list
             index_list.append(user)
 
@@ -315,7 +314,7 @@ class countUserActivity(APIView):
 
         return JsonResponse({
             'nodes':nodes,
-            'edges': edges
+            'edges':edges
             })
 
 class predictQueryResponseTime(APIView):

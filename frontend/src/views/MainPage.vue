@@ -312,31 +312,12 @@ export default {
             let g = svg.append('g')
               .attr('transform', 'translate(' + marge.top + ',' + marge.left + ')')
             // Node Dataset
-            let nodes = [
-              { name: '0' },
-              { name: '1' },
-              { name: '2' },
-              { name: '3' },
-              { name: '4' },
-              { name: '5' },
-              { name: '6' },
-              { name: '7' },
-              { name: '8' }
-            ]
+            let nodes = response.data.nodes
+            console.log(nodes)
             // Side Dataset
             // 边集
-            let edges = [
-              { source: 0, target: 4, relation: 'into', value: 1 },
-              { source: 4, target: 5, relation: 'from', value: 1 },
-              { source: 4, target: 6, relation: '舍友', value: 1 },
-              { source: 4, target: 7, relation: '舍友', value: 1 },
-              { source: 1, target: 6, relation: '籍贯', value: 2 },
-              { source: 2, target: 5, relation: '籍贯', value: 0.9 },
-              { source: 3, target: 7, relation: '籍贯', value: 1 },
-              { source: 5, target: 6, relation: '同学', value: 1.6 },
-              { source: 6, target: 7, relation: '朋友', value: 0.7 },
-              { source: 6, target: 8, relation: '职责', value: 2 }
-            ]
+            let edges = response.data.edges
+            console.log(edges)
             // Set a color scale
             // 设置一个颜色比例尺
             let colorScale = d3.scaleOrdinal()
