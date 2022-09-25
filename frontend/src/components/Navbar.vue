@@ -7,6 +7,7 @@
                       <img src="../assets/afterburner.png" alt="north" />
                       <h3 class="text-base text-white font-bold tracking-normal leading-tight ml-3 hidden lg:block"><a href="#/">AfterburnerSQL</a></h3>
                   </div>    
+                  
               <div>
               </div>
               </div>
