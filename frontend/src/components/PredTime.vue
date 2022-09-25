@@ -6,9 +6,8 @@
       </div>
     </div>
   </div>
-  <div v-else-if="M1" key="M1.probs">Предсказание выполнения запроса по количеству операторов: {{M1.data.result}} ms</div>
-  <div v-else-if="M2" key="M2.data">Предсказание выполнения запроса по количеству операторов: {{M2.data.result}} ms</div>
-  <div v-else-if="M3" key="M3.compl">Предсказание выполнения запроса по количеству операторов: {{M3.data.result}} ms</div>
+  <div v-else-if="M1" key="M1.probs, M2.data, M3.compl"><p>Предсказание выполнения запроса по количеству операторов: {{Math.round(M1.data.result)}}ms </p> 
+    <p>Предсказание выполнения запроса по телу запроса:{{Math.round(M2.data.result)}} ms</p> </div>
   <div v-else key="not-found">Не найдено</div>
 </template>
 
