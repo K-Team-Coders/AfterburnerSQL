@@ -42,7 +42,7 @@ class Report(APIView):
         nodes = [] # [{'name': 'user'}, {'name':'user'}]
         edges = [] # [{'source':0, 'target':0, 'realation':'into', 'value': 1}]
 
-        dataframe = count_table_id(path)
+        dataframe = users_df
 
         for user in dataframe['id']:
             nodes.append({'name':f'{user}'})
@@ -111,7 +111,51 @@ class Report(APIView):
         logger.debug(nodes[0])
         logger.debug(edges[0])
 
+        ready_joins = []
+        ready_intos = []
+        ready_froms = []
+
+
+        names = tables_df['table_name'].to_list()
+        froms = tables_df['from'].to_list()
+        joins = tables_df['join'].to_list()
+        intos = tables_df['into'].to_list()
+
+        froms_sum = sum(froms)
+        joins_sum = sum(joins)
+        intos_sum = sum(intos)
+
+        most_wanted = 0
+        maximum = 0
+        for index in range(len(names)):
+            if (froms[index] + joins[index] + intos[index]) > maximum:
+                maximum = froms[index] + joins[index] + intos[index]
+                most_wanted = {
+                    'count': maximum,
+                    'table': names[index]
+                }
+
+            ready_joins.append({
+                'x':names[index],
+                'y':joins[index]
+            })
+            ready_froms.append({
+                'x':names[index],
+                'y':froms[index]
+            })
+            ready_intos.append({
+                'x':names[index],
+                'y':intos[index]
+            })
+
         return JsonResponse({
+            'from': ready_joins,
+            'join': ready_joins,
+            'into': ready_intos,
+            'sum_into': intos_sum,
+            'sum_joins': joins_sum,
+            'sum_froms': froms_sum,
+            'most_wanted': most_wanted,
             'nodes1234':nodes,
             'edges1234':edges
             })
