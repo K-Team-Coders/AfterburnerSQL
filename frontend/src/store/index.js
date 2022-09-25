@@ -13,9 +13,9 @@ export default createStore({
     state: {
       searchQuery: '',
       loading: false,
-      tnved: 'null',
-      probility: 'null',
-      complex: 'null'
+      M1: 'null',
+      M2: 'null',
+      M3: 'null'
     },
   },
   getters: {
@@ -23,10 +23,13 @@ export default createStore({
   },
   mutations: {
     [SET_SEARCH_QUERY]: (state, searchQuery) => state.searchQuery = searchQuery,
-    [SET_PROBITY_RES]: (state, probility) => state.probility = probility,
+    [SET_PROBITY_RES]: (state, M1) => state.M1 = M1,
+    [SET_COMPLEX_RES]: (state, M2) => state.M2 = M2,
+    [SET_RESULT_RES]: (state, M3) => state.M3 = M3,
     [SET_LOADING]: (state, loading) => state.loading = loading,
-    [RESET_SEARCH]: state => state.tnved = null,
-
+    [RESET_SEARCH]: state => state.M1 = null,
+    [RESET_SEARCH]: state => state.M2 = null,
+    [RESET_SEARCH]: state => state.M3 = null,
     
 
   },
@@ -37,8 +40,13 @@ export default createStore({
     async search({commit, state}) {
       commit(SET_LOADING, true);
       try {
-        const {data} = await axios.get(`http://127.0.0.1:8000/predict_query_time_execution/${state.searchQuery}/`);
+        const {data} = await axios.get(`http://127.0.0.1:8000/main/predict_query_time_execution/${state.searchQuery}/`);
         commit(SET_RESULT_RES, data);
+        let probs = await axios.get(`http://127.0.0.1:8000/main/predict_query_time_execution_operators/${state.searchQuery}/`);
+        commit(SET_PROBITY_RES, probs);
+        let compl = await axios.get(`http://127.0.0.1:8000/main/predictQueryResponseTimeDesicionTree/${state.searchQuery}/`);
+        commit(SET_COMPLEX_RES, compl);
+        console.log(probs)
       } catch (e) {
         commit(RESET_SEARCH);
       }
