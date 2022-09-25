@@ -21,6 +21,146 @@ from nltk.corpus import stopwords
 from pymystem3 import Mystem
 from pathlib import Path
 
+class Report(APIView):
+    def get(self, request):
+        users = os.path.join(settings.BASE_DIR.parent, 'data/loguser_result.csv')
+        tables = os.path.join(settings.BASE_DIR.parent, 'data/tables_result.csv')
+
+        users_df = pd.read_csv(users)
+        users_df.drop('Unnamed: 0', axis=1)
+        users_df['join'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
+        users_df['into'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
+        users_df['from'].apply(lambda x: x.replace('[', '').replace(']', '').replace("'", '').replace(',', ' ').split())
+
+        tables_df = pd.read_csv(tables)
+        tables.drop('Unnamed: 0', axis=1)
+
+        logger.debug(users_df)
+        logger.debug(tables_df)
+        
+        index_list = []
+        nodes = [] # [{'name': 'user'}, {'name':'user'}]
+        edges = [] # [{'source':0, 'target':0, 'realation':'into', 'value': 1}]
+
+        dataframe = users_df
+
+        for user in dataframe['id']:
+            nodes.append({'name':f'{user}'})
+            # help list
+            index_list.append(user)
+
+            part_df = dataframe[dataframe['id'] == user]
+            # FROM
+            froms = part_df['from'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+            # INTO
+            froms = part_df['into'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'into',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'into',
+                        'value': 1
+                    })    
+            # JOIN
+            froms = part_df['join'].values[0]
+            for from_ in froms:
+                if from_ in index_list:
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+                else:
+                    index_list.append(from_)
+                    nodes.append({"name":f'{from_}'})
+                    edges.append({
+                        'source':index_list.index(user),
+                        'target':index_list.index(from_),
+                        'relation': 'from',
+                        'value': 1
+                    })
+
+        logger.debug(nodes[0])
+        logger.debug(edges[0])
+
+        ready_joins = []
+        ready_intos = []
+        ready_froms = []
+
+
+        names = tables_df['table_name'].to_list()
+        froms = tables_df['from'].to_list()
+        joins = tables_df['join'].to_list()
+        intos = tables_df['into'].to_list()
+
+        froms_sum = sum(froms)
+        joins_sum = sum(joins)
+        intos_sum = sum(intos)
+
+        most_wanted = 0
+        maximum = 0
+        for index in range(len(names)):
+            if (froms[index] + joins[index] + intos[index]) > maximum:
+                maximum = froms[index] + joins[index] + intos[index]
+                most_wanted = {
+                    'count': maximum,
+                    'table': names[index]
+                }
+
+            ready_joins.append({
+                'x':names[index],
+                'y':joins[index]
+            })
+            ready_froms.append({
+                'x':names[index],
+                'y':froms[index]
+            })
+            ready_intos.append({
+                'x':names[index],
+                'y':intos[index]
+            })
+
+        return JsonResponse({
+            'from': ready_joins,
+            'join': ready_joins,
+            'into': ready_intos,
+            'sum_into': intos_sum,
+            'sum_joins': joins_sum,
+            'sum_froms': froms_sum,
+            'most_wanted': most_wanted,
+            'nodes1234':nodes,
+            'edges1234':edges
+            })
+
+
 class countTableUsability(APIView):
     def post(self, request):
         def count_table_query(table_name):
