@@ -44,7 +44,7 @@
               <div
                 class="border-r border-b border-l w-full shadow-xl hover:shadow-2xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
-                  <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет по запросам от
+                  <div  class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Подсчет по запросам от
                     разработчиков</div>
                   <p class="text-gray-700 text-xl font-rale text-center">Позволяет выявить наиболее активных
                     разработчиков, и тех кто единожды загрузил данные</p>
@@ -58,8 +58,8 @@
               <div
                 class="border-r border-b border-l w-full shadow-xl hover:shadow-2xl border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
-                  <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Функция 3</div>
-                  <p class="text-gray-700 text-xl font-rale text-center">Ждите, скоро появится ^_^</p>
+                  <div iv class="text-gray-900 font-bold text-3xl mb-2 font-corme text-center">Предсказание времени выполнения SQL запроса на основе тела запроса</div>
+                  <p class="text-gray-700 text-xl font-rale text-center">Предсказание проводится на основе моделей машинного обучения и нейоронных сетей: <ul><li>1) Модель регрессии.</li><li>2) Дерево решений</li></ul> </p>
                 </div>
               </div>
             </div>
